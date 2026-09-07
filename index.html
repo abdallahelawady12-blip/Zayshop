@@ -5,33 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zay Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
-   <style>
-    /* حركة السلايدر */
-    .slider {
-      position: relative;
-      overflow: hidden;
-    }
-    .slides {
-      display: flex;
-      transition: transform 0.6s ease-in-out;
-    }
-    .slide {
-      min-width: 100%;
-      transition: opacity 0.5s;
-    }
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .arrow.left { left: 10px; }
-    .arrow.right { right: 10px; }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     .slider { position: relative; overflow: hidden; }
     .slides { display: flex; transition: transform 0.6s ease-in-out; }
@@ -43,64 +17,72 @@
     }
     .arrow.left { left: 10px; }
     .arrow.right { right: 10px; }
+    .indicators {
+      position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px;
+    }
+    .indicator {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: rgba(255,255,255,0.6); cursor: pointer;
+    }
+    .indicator.active { background: #16a34a; }
   </style>
 </head>
 <body class="bg-gray-100">
 
   <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6">
-      <h1 class="text-2xl font-bold text-green-600">Zay</h1>
+  <header class="bg-gradient-to-r from-green-600 to-green-400 shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6 text-white">
+      <h1 class="text-2xl font-bold">Zay</h1>
       <nav class="space-x-6">
-        <a href="#" class="text-gray-700 hover:text-green-600">Home</a>
-        <a href="#" class="text-gray-700 hover:text-green-600">About</a>
-        <a href="#" class="text-gray-700 hover:text-green-600">Shop</a>
-        <a href="#" class="text-gray-700 hover:text-green-600">Contact</a>
+        <a href="#" class="hover:text-yellow-300"><i class="fa fa-home"></i> Home</a>
+        <a href="#" class="hover:text-yellow-300"><i class="fa fa-info-circle"></i> About</a>
+        <a href="#" class="hover:text-yellow-300"><i class="fa fa-store"></i> Shop</a>
+        <a href="#" class="hover:text-yellow-300"><i class="fa fa-envelope"></i> Contact</a>
       </nav>
     </div>
-    <div class="bg-green-600 text-white text-sm text-center py-2">
+    <div class="bg-green-800 text-white text-sm text-center py-2">
       abdallahelawady12@gmail.com | 01095534160
     </div>
   </header>
 
   <!-- Collection Slider -->
-  <section class="slider h-96">
+  <section class="slider h-96 relative">
     <div class="slides">
       <div class="slide">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLOgtRl-ifQJNnXDxtxibhPsSQEQA9vn2z-8evnBao9h66DyfQ386MGLv5&s=10" class="w-full h-96 object-cover">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="w-full h-96 object-cover">
       </div>
       <div class="slide">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJeNFIZIZRYN6kOE840Jbv9jLRcBMEKKLIPhDJldCBTQ&s" class="w-full h-96 object-cover">
+        <img src="2.avif" class="w-full h-96 object-cover">
       </div>
       <div class="slide">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQyssciCQrtMfWAr1zIY6lKK9MLHO6-qX1xr4FvJ6lXBuGKbyv5BCKaTU&s=10" class="w-full h-96 object-cover">
+        <img src="2.avif" class="w-full h-96 object-cover">
       </div>
     </div>
     <div class="arrow left" onclick="prevSlide()">&#10094;</div>
     <div class="arrow right" onclick="nextSlide()">&#10095;</div>
+    <div class="indicators"></div>
   </section>
 
   <!-- Categories -->
   <section class="container mx-auto py-12 px-6">
     <h2 class="text-2xl font-bold text-center mb-4">Categories of The Month</h2>
-    <p class="text-center text-gray-600 mb-8">Excepteur sint occaecat cupidatat non proident...</p>
+    <p class="text-center text-gray-600 mb-8">Explore our top picks for this month...</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div>
-        <img src="2.avif" class="mx-auto rounded-full w-40 h-40 object-cover">
+      <div class="hover:scale-105 transition-transform duration-300">
+        <img src="2.avif"mx-auto rounded-full w-40 h-40 object-cover shadow-lg">
         <h3 class="mt-4 font-semibold">Watches</h3>
-        <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded">Go Shop</button>
+        <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 hover:scale-105 transition">Go Shop</button>
       </div>
-      <div>
-        <img src="https://media.istockphoto.com/id/1688015574/photo/white-sneaker-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=gz8bGn7h_eaF4uJGJjdZYYhJDrrigHAygo2Vi8tZjH8=" 
-             class="mx-auto rounded-full w-40 h-40 object-cover">
+      <div class="hover:scale-105 transition-transform duration-300">
+        <img src="2.avif" class="mx-auto rounded-full w-40 h-40 object-cover shadow-lg">
         <h3 class="mt-4 font-semibold">Shoes</h3>
-        <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded">Go Shop</button>
+        <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 hover:scale-105 transition">Go Shop</button>
       </div>
-      <div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNUhf7Bp1uudP5Lic-iv05Y7iFdPcLAOfGB_Vt2Foq3eKj_1FJWbB9Hgs&s=10" 
-             class="mx-auto rounded-full w-40 h-40 object-cover">
+      <div class="hover:scale-105 transition-transform duration-300">
+        <img src="2.avif" class="mx-auto rounded-full w-40 h-40 object-cover shadow-lg">
         <h3 class="mt-4 font-semibold">Accessories</h3>
-        <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded">Go Shop</button>
+        <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 hover:scale-105 transition">Go Shop</button>
       </div>
     </div>
   </section>
@@ -108,23 +90,22 @@
   <!-- Featured Products -->
   <section class="container mx-auto py-12 px-6">
     <h2 class="text-2xl font-bold text-center mb-4">Featured Product</h2>
-    <p class="text-center text-gray-600 mb-8">Reprehenderit in voluptate velit esse cillum dolore...</p>
+    <p class="text-center text-gray-600 mb-8">Our handpicked featured items...</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white shadow rounded p-4 text-center">
-        <img src="2.avif" class="mx-auto w-40 h-40 object-cover">
+      <div class="bg-white shadow-lg rounded p-4 text-center hover:shadow-2xl transition">
+        <img src="2.avif" class="mx-auto w-40 h-40 object-cover rounded">
         <h3 class="mt-4 font-semibold">Gym Weight</h3>
         <p class="text-green-600 font-bold">$240.00</p>
         <p class="text-yellow-500">★★★★☆</p>
       </div>
-      <div class="bg-white shadow rounded p-4 text-center">
-        <img src="2.avif" 
-             class="mx-auto w-40 h-40 object-cover">
+      <div class="bg-white shadow-lg rounded p-4 text-center hover:shadow-2xl transition">
+        <img src="2.avif" class="mx-auto w-40 h-40 object-cover rounded">
         <h3 class="mt-4 font-semibold">Smart Watch</h3>
         <p class="text-green-600 font-bold">$180.00</p>
         <p class="text-yellow-500">★★★☆☆</p>
       </div>
-      <div class="bg-white shadow rounded p-4 text-center">
-        <img src="2.avif" class="mx-auto w-40 h-40 object-cover">
+      <div class="bg-white shadow-lg rounded p-4 text-center hover:shadow-2xl transition">
+        <img src="2.avif" class="mx-auto w-40 h-40 object-cover rounded">
         <h3 class="mt-4 font-semibold">Camera</h3>
         <p class="text-green-600 font-bold">$320.00</p>
         <p class="text-yellow-500">★★★☆☆</p>
@@ -133,13 +114,18 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12">
+  <footer class="bg-gradient-to-r from-gray-900 to-green-900 text-white py-12">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
       <div>
         <h3 class="font-bold mb-2">Zay Shop</h3>
         <p>123 dsryo’gffra 10660</p>
         <p>01095534160</p>
         <p>abdallahelawady12@gmail.com</p>
+        <div class="flex gap-4 mt-4">
+          <i class="fab fa-facebook text-xl hover:text-green-400 cursor-pointer"></i>
+          <i class="fab fa-instagram text-xl hover:text-green-400 cursor-pointer"></i>
+          <i class="fab fa-twitter text-xl hover:text-green-400 cursor-pointer"></i>
+        </div>
       </div>
       <div>
         <h3 class="font-bold mb-2">Products</h3>
@@ -150,19 +136,8 @@
           <li>Women’s Shoes</li>
           <li>Popular Dress</li>
           <li>Gym Accessories</li>
-          <li>Sport Shoes</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-bold mb-2">Further Info</h3>
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Shop Locations</li>
-          <li>FAQs</li>
-          <li>Contact</li>
-        </ul>
-        <div class="mt-4">
+          <li>Sport</li>
+                 <div class="mt-4">
           <input type="email" placeholder="Email address" class="px-3 py-2 rounded text-black">
           <button class="bg-green-600 px-4 py-2 rounded ml-2">Subscribe</button>
         </div>
